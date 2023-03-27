@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "start": "gulp performJSOperations",
+    "start": "gulp",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
@@ -19,7 +19,10 @@
   },
   "devDependencies": {
     "gulp": "*",
-    "gulp-concat": "*"
+    "gulp-concat": "*",
+    "gulp-terser": "*"
   },
-  "devDependenciesComments": {}
+  "devDependenciesComments": {
+    "gulp-terser": "Used for code minification (supports ES6), Repo Link: https://github.com/duan602728596/gulp-terser#readme"
+  }
 }

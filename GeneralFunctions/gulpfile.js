@@ -2,12 +2,14 @@
  * @description Main entry point for defining Gulp tasks and Gulp plugin usage.
  * Additional information and resources:
  * https://go.microsoft.com/fwlink/?LinkId=518007
+ * https://github.com/gulpjs/gulp/tree/master/docs/recipes
  * Gulp 4.0 Tutorial 2020 - https://www.youtube.com/watch?v=ssG5mziTF3E
  */
 
 //Required dependencies
 const gulp = require('gulp');
 const concat = require('gulp-concat');
+const terser = require('gulp-terser');
 
 
 const { src, watch, parallel, series } = require('gulp');
@@ -39,14 +41,21 @@ const outputPath = './build/';
 
 // Final build js file name
 const finalJsFileName = 'built.js';
-
+/**
+ * @description
+ * src(jsFilesPath) - load all js files from src folder
+ * pipe(concat(finalJsFileName)) - Unify all js files to a single file with the name specified in the "finalJsFileName" variable
+ * terser() - Used for code minification
+ * gulp.dest(outputPath) - copies the finished js file and source map to the path specified in the variable "outputPath"
+ **/
 function jsTask() {
     //Get all js files from project dir
-    let jsSrcStream = src().on('error', handleError);
+    let jsSrcStream = src(jsFilesPath).on('error', handleError);
     
     //Piped operations
     jsSrcStream = jsSrcStream
     .pipe(concat(finalJsFileName))
+    .pipe(terser())
     .on('error', handleError);
     
     // copy the files to the output path
@@ -69,4 +78,7 @@ function handleError(err) {
 // #endregion
 
 //Set default gulp task
-gulp.task('default', 'performJSOperations');
+gulp.task('default', (done) => {
+  jsTask();
+  done();
+});

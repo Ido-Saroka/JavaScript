@@ -19,7 +19,8 @@ export const filterInPlace = (array, predicate) => {
       }
     }
     array.length = end;
-    console.log('Test');
+    console.log('Test'); 
+    
   } catch (exception) {
     console.log(`Exception while filtering array: ${exception}`);
   }
