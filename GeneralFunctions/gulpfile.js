@@ -10,12 +10,13 @@
 const gulp = require('gulp');
 const concat = require('gulp-concat');
 const terser = require('gulp-terser');
+const removeImportExport = require('gulp-strip-import-export');
 
 
-const { src, watch, parallel, series } = require('gulp');
+const { src, watch} = require('gulp');
 
 /**
- * watchTask - Used for performing required operations when a change occurs on specific paths
+ * watchTask - Will auto run the specified functions when a change is detected (using 'ctrl' + 's' in any of the given files will run the functions).
  * */
 function watchTask() {
     watch([jsFilesPath], { interval: 500 }, gulp.series('performJSOperations'));
@@ -41,10 +42,12 @@ const outputPath = './build/';
 
 // Final build js file name
 const finalJsFileName = 'built.js';
+
 /**
  * @description
  * src(jsFilesPath) - load all js files from src folder
  * pipe(concat(finalJsFileName)) - Unify all js files to a single file with the name specified in the "finalJsFileName" variable
+ * removeImportExport - used to remove import/ export statements from the code
  * terser() - Used for code minification
  * gulp.dest(outputPath) - copies the finished js file and source map to the path specified in the variable "outputPath"
  **/
@@ -55,6 +58,7 @@ function jsTask() {
     //Piped operations
     jsSrcStream = jsSrcStream
     .pipe(concat(finalJsFileName))
+    .pipe(removeImportExport())
     .pipe(terser())
     .on('error', handleError);
     
@@ -82,3 +86,5 @@ gulp.task('default', (done) => {
   jsTask();
   done();
 });
+
+exports.watch = watchTask;

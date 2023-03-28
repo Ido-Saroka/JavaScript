@@ -1,1 +1,1 @@
-function isArrayValid(l){return null!=l&&0!==l.length}export const filterInPlace=(l,n)=>{try{if(!isArrayValid(l)||null==n)return null;let t=0;for(let e=0;e<l.length;e+=1){const r=l[e];n(r)&&(l[t++]=r)}l.length=t,console.log("Test")}catch(l){console.log(`Exception while filtering array: ${l}`)}};
+function isArrayValid(l){return null!=l&&0!==l.length}const filterInPlace=(l,n)=>{try{if(!isArrayValid(l)||null==n)return null;let t=0;for(let r=0;r<l.length;r+=1){const e=l[r];n(e)&&(l[t++]=e)}l.length=t}catch(l){console.log(`Exception while filtering array: ${l}`)}};

@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "start": "gulp",
+    "start": "gulp watch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
@@ -20,9 +20,11 @@
   "devDependencies": {
     "gulp": "*",
     "gulp-concat": "*",
+    "gulp-strip-import-export": "*",
     "gulp-terser": "*"
   },
   "devDependenciesComments": {
-    "gulp-terser": "Used for code minification (supports ES6), Repo Link: https://github.com/duan602728596/gulp-terser#readme"
+    "gulp-terser": "Used for code minification (supports ES6), Repo Link: https://github.com/duan602728596/gulp-terser#readme",
+    "gulp-strip-import-export": "Removes import export syntax so JS can be executed on the browser, Repo Link: https://github.com/elliot-nelson/gulp-strip-import-export"
   }
 }
