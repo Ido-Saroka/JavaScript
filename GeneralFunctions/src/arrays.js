@@ -3,7 +3,7 @@
  * @param {Array} arrayToTest 
  * @returns 
  */
-function isArrayValid(arrayToTest) {
+export function isArrayValid(arrayToTest) {
   if (arrayToTest == null || arrayToTest.length === 0) {
     return false;
   }
