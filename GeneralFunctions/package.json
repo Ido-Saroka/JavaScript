@@ -18,6 +18,8 @@
     "eslint-config-wesbos": "^3.2.3"
   },
   "devDependencies": {
+    "@types/jest": "*",
+    "eslint-plugin-jest": "*",
     "gulp": "*",
     "gulp-concat": "*",
     "gulp-strip-import-export": "*",
@@ -27,6 +29,8 @@
   "devDependenciesComments": {
     "gulp-terser": "Used for code minification (supports ES6), Repo Link: https://github.com/duan602728596/gulp-terser#readme",
     "gulp-strip-import-export": "Removes import export syntax so JS can be executed on the browser, Repo Link: https://github.com/elliot-nelson/gulp-strip-import-export",
-    "jest": "Used for testing the product code, Framework Link: https://jestjs.io/"
+    "jest": "Used for testing the product code, Framework Link: https://jestjs.io/",
+    "@types/jest": "Needed in order to allow correct interaction between ESLint and Jest functions and types, Package Link: https://www.npmjs.com/package/@types/jest",
+    "eslint-plugin-jest": "Supports eslint configuration for jest, Repo Link: https://github.com/jest-community/eslint-plugin-jest"
   }
 }
